@@ -1,14 +1,34 @@
 <html>
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     </head>
     <body>
         <h1>Filesize Microservice</h1>
         <div id="userStories">
             <h2>Use:</h2>
             <ol>
-                <li>You can upload a file and this service will tell you how large it is.</li>
+                <li>Select a file on your computer, and this service will generate a popup telling you how large it is.</li>
                 <li>That's it.</li>
             </ol>
         </div>
+<form id="fileForm" name="fileForm" enctype="multipart/form-data">
+  <input type="file" id="uploadedFile" multiple required/>
+</form>
+        <script>
+                           var control = document.getElementById("uploadedFile");
+control.addEventListener("change", function(event) {
+        var files = control.files;
+
+
+        alert("Selected file: " + files[0].name + " is " + files[0].size + " bytes large.");
+            $("#fileForm").on("submit", function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+}, false);
+            });
+        </script>
     </body>
 </html>
+
+
+
